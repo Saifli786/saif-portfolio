@@ -1,9 +1,8 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Mail, Phone, Download, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Phone, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import { personalInfo, socialLinks } from "@/lib/data";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -29,8 +28,6 @@ function StatCard({ value, label, delay }: { value: string; label: string; delay
 }
 
 export default function About() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="about" className="section" style={{ background: "linear-gradient(180deg, var(--bg-void) 0%, var(--bg-surface) 100%)" }}>
@@ -112,7 +109,6 @@ export default function About() {
 
           {/* Content */}
           <motion.div
-            ref={ref}
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -130,7 +126,7 @@ export default function About() {
 
             {/* Stats */}
             <div className="glass rounded-xl p-6 mb-8">
-              <div className="grid grid-cols-3 divide-x divide-white/5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {personalInfo.stats.map((stat, i) => (
                   <StatCard key={i} value={stat.value} label={stat.label} delay={i * 0.1} />
                 ))}

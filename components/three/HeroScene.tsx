@@ -1,9 +1,19 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Environment, MeshDistortMaterial } from "@react-three/drei";
+import { Float, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
+
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    if (typeof args[0] === "string" && args[0].includes("THREE.Clock")) {
+      return;
+    }
+    originalWarn(...args);
+  };
+}
 
 function FloatingOrb({ position, color, scale = 1, speed = 1 }: {
   position: [number, number, number];
@@ -70,26 +80,28 @@ function GeometryAccent({ position, scale = 1 }: {
   );
 }
 
+const PARTICLES_COUNT = 80;
+const particlesData = (() => {
+  const positions = new Float32Array(PARTICLES_COUNT * 3);
+  const colors = new Float32Array(PARTICLES_COUNT * 3);
+  const crimsonColor = new THREE.Color("#dc2626");
+  const dimColor = new THREE.Color("#3f0000");
+
+  for (let i = 0; i < PARTICLES_COUNT; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 20;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8 - 4;
+
+    const c = Math.random() > 0.7 ? crimsonColor : dimColor;
+    colors[i * 3]     = c.r;
+    colors[i * 3 + 1] = c.g;
+    colors[i * 3 + 2] = c.b;
+  }
+  return { positions, colors };
+})();
+
 function Particles() {
-  const count = 80;
-  const { positions, colors } = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-    const crimsonColor = new THREE.Color("#dc2626");
-    const dimColor = new THREE.Color("#3f0000");
-
-    for (let i = 0; i < count; i++) {
-      positions[i * 3]     = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 8 - 4;
-
-      const c = Math.random() > 0.7 ? crimsonColor : dimColor;
-      colors[i * 3]     = c.r;
-      colors[i * 3 + 1] = c.g;
-      colors[i * 3 + 2] = c.b;
-    }
-    return { positions, colors };
-  }, []);
+  const { positions, colors } = particlesData;
 
   const ref = useRef<THREE.Points>(null);
 

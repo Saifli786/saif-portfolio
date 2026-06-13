@@ -39,7 +39,7 @@ function SkillBar({ name, percentage, detail, delay }: {
           style={{ width: filled ? `${percentage}%` : "0%", transitionDelay: `${delay}s` }}
         />
       </div>
-      <div className="mt-1.5 text-[11px] text-white/25 overflow-hidden max-h-0 group-hover:max-h-8 transition-all duration-300">
+      <div className="mt-1.5 text-[11px] text-white/35 lg:text-white/25 overflow-hidden max-h-12 lg:max-h-0 lg:group-hover:max-h-8 transition-all duration-300">
         {detail}
       </div>
     </motion.div>

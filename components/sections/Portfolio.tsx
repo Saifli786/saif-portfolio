@@ -8,7 +8,7 @@ import { GithubIcon } from "@/components/ui/SocialIcons";
 import { projects, portfolioFilters } from "@/lib/data";
 import SectionTitle from "@/components/ui/SectionTitle";
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -46,12 +46,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-        {/* Overlay content on hover */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 12 }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 flex items-end p-5"
+        {/* Overlay content - always visible on mobile/tablet, hover-animated on desktop */}
+        <div
+          className="absolute inset-0 flex items-end p-5 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-all duration-300 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0"
         >
           <div className="w-full">
             {/* Tech badges */}
@@ -97,7 +94,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Card body */}
@@ -166,8 +163,8 @@ export default function Portfolio() {
         <LayoutGroup>
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
-              {filtered.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
+              {filtered.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </AnimatePresence>
           </motion.div>

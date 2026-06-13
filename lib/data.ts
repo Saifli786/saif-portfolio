@@ -72,8 +72,6 @@ export const navItems = [
   { label: "Skills",       href: "#skills",       icon: "Zap" },
   { label: "Resume",       href: "#resume",       icon: "FileText" },
   { label: "Portfolio",    href: "#portfolio",    icon: "Layers" },
-  { label: "Services",     href: "#services",     icon: "Settings" },
-  { label: "Testimonials", href: "#testimonials", icon: "MessageSquare" },
   { label: "Contact",      href: "#contact",      icon: "Mail" },
 ];
 
@@ -205,52 +203,7 @@ export const portfolioFilters = [
   { label: "Web App",         value: "web-app" },
 ];
 
-export const services = [
-  {
-    icon: "Brain",
-    title: "Machine Learning",
-    description: "End-to-end ML pipelines, model training, evaluation, and deployment. From data preprocessing to production-ready APIs.",
-  },
-  {
-    icon: "Eye",
-    title: "Computer Vision",
-    description: "Real-time image and video analysis using CNNs, object detection, face recognition, and custom vision pipelines.",
-  },
-  {
-    icon: "BarChart3",
-    title: "Data Analysis",
-    description: "Exploratory data analysis, feature engineering, statistical modeling, and actionable insights visualization.",
-  },
-  {
-    icon: "Globe",
-    title: "ML Web Applications",
-    description: "Flask-based web applications integrating trained ML models with clean user interfaces and RESTful APIs.",
-  },
-];
 
-export const testimonials = [
-  {
-    name: "Prof. Anita Sharma",
-    position: "AI/ML Faculty, MM(DU)",
-    text: "Saif demonstrates exceptional analytical thinking and a genuine passion for machine learning. His Heart Disease Prediction project showed production-level thinking from an undergraduate.",
-    highlight: true,
-    image: "/assets/img/testimonials/testimonials-1.webp",
-  },
-  {
-    name: "Rajesh Kumar",
-    position: "Senior ML Engineer, Tech Company",
-    text: "Impressive understanding of model evaluation and explainability. The SHAP integration in his medical ML project shows he thinks beyond just accuracy metrics.",
-    highlight: false,
-    image: "/assets/img/testimonials/testimonials-2.jpg",
-  },
-  {
-    name: "Priya Verma",
-    position: "Data Science Lead, Startup",
-    text: "Saif's approach to problem-solving is methodical and innovative. His liveliness detection system tackled a genuinely hard CV problem with elegant solutions.",
-    highlight: false,
-    image: "/assets/img/testimonials/testimonials-3.jpg",
-  },
-];
 
 export const achievements = [
   {

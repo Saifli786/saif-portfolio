@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X, Home, User, Zap, FileText, Layers, Settings, MessageSquare, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
-import Link from "next/link";
 import Image from "next/image";
 import { navItems, socialLinks, personalInfo } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -32,7 +31,10 @@ export default function Sidebar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Scrollspy
   useEffect(() => {
@@ -55,7 +57,7 @@ export default function Sidebar() {
     return () => observers.forEach(o => o.disconnect());
   }, []);
 
-  const NavContent = () => (
+  const renderNavContent = () => (
     <>
       {/* Brand */}
       <div className="px-2 py-4 mb-2 border-b border-black/5 dark:border-white/5">
@@ -144,7 +146,7 @@ export default function Sidebar() {
       {/* Desktop Sidebar */}
       <aside className="hidden xl:flex fixed top-0 left-0 bottom-0 w-[260px] z-50 p-3">
         <div className="glass rounded-2xl w-full flex flex-col p-3 h-full">
-          <NavContent />
+          {renderNavContent()}
         </div>
       </aside>
 
@@ -181,7 +183,7 @@ export default function Sidebar() {
                 >
                   <X size={18} />
                 </button>
-                <NavContent />
+                {renderNavContent()}
               </div>
             </motion.aside>
           </>

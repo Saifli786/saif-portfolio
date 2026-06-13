@@ -1,23 +1,22 @@
 "use client";
 
 import { Suspense, lazy } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, Download, MessageCircle } from "lucide-react";
+import { ArrowDown, MessageCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import { personalInfo, socialLinks, typedRoles } from "@/lib/data";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 // Dynamically import Three.js scene to avoid SSR issues
 const HeroScene = lazy(() => import("@/components/three/HeroScene"));
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden:  { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
 };
@@ -53,8 +52,10 @@ function TypedText({ items }: { items: string[] }) {
           setCharIndex(c => c - 1);
         }, 40);
       } else {
-        setDeleting(false);
-        setIndex(i => (i + 1) % items.length);
+        timeout = setTimeout(() => {
+          setDeleting(false);
+          setIndex(i => (i + 1) % items.length);
+        }, 300);
       }
     }
 
@@ -71,7 +72,10 @@ function TypedText({ items }: { items: string[] }) {
 
 export default function Hero() {
   const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(true), []);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsClient(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section
@@ -196,9 +200,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
-            className="hidden lg:flex justify-center"
+            className="flex justify-center mt-12 lg:mt-0"
           >
-            <div className="relative w-[340px] h-[400px]">
+            <div className="relative w-[280px] h-[330px] sm:w-[340px] sm:h-[400px]">
               {/* Rotating crimson border */}
               <div
                 className="absolute -inset-3 rounded-[36px] opacity-50"
@@ -218,7 +222,7 @@ export default function Hero() {
                   fill
                   className="object-cover object-center"
                   priority
-                  sizes="340px"
+                  sizes="(max-width: 640px) 280px, 340px"
                 />
                 {/* Glass overlay at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
@@ -232,7 +236,7 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -left-12 top-1/4 glass rounded-xl px-3 py-2 text-center"
+                className="absolute -left-12 top-1/4 glass rounded-xl px-3 py-2 text-center hidden sm:block"
               >
                 <div className="text-xl font-black text-crimson-500">10+</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Projects</div>
@@ -241,7 +245,7 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -right-12 bottom-1/3 glass rounded-xl px-3 py-2 text-center"
+                className="absolute -right-12 bottom-1/3 glass rounded-xl px-3 py-2 text-center hidden sm:block"
               >
                 <div className="text-xl font-black text-crimson-500">93%</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Accuracy</div>
