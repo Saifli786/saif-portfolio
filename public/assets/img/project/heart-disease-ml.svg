@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+  <defs>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#f0f0f0;stop-opacity:0.95" />
+    </linearGradient>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5a6f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="bold" font-family="Arial, sans-serif">
+    Heart Disease Prediction System
+  </text>
+  <text x="400" y="80" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif" opacity="0.9">
+    Machine Learning Pipeline for Cardiovascular Risk Assessment
+  </text>
+
+  <!-- Main Container -->
+  <rect x="50" y="110" width="700" height="440" rx="20" fill="url(#cardGradient)" filter="url(#shadow)"/>
+
+  <!-- Input Section -->
+  <g transform="translate(80, 140)">
+    <rect x="0" y="0" width="180" height="360" rx="12" fill="#667eea" opacity="0.1" stroke="#667eea" stroke-width="2"/>
+    <text x="90" y="25" text-anchor="middle" fill="#333333" font-size="18" font-weight="bold">Input Data</text>
+    
+    <!-- Data Icons -->
+    <circle cx="40" cy="60" r="15" fill="#4facfe" opacity="0.2"/>
+    <text x="40" y="66" text-anchor="middle" fill="#333333" font-size="11" font-weight="bold">Age</text>
+    <rect x="70" y="50" width="90" height="6" rx="3" fill="#e0e0e0"/>
+    <rect x="70" y="50" width="65" height="6" rx="3" fill="#4facfe"/>
+    
+    <circle cx="40" cy="100" r="15" fill="#4facfe" opacity="0.2"/>
+    <text x="40" y="106" text-anchor="middle" fill="#333333" font-size="9" font-weight="bold">BP</text>
+    <rect x="70" y="90" width="90" height="6" rx="3" fill="#e0e0e0"/>
+    <rect x="70" y="90" width="75" height="6" rx="3" fill="#4facfe"/>
+    
+    <circle cx="40" cy="140" r="15" fill="#4facfe" opacity="0.2"/>
+    <text x="40" y="146" text-anchor="middle" fill="#333333" font-size="8" font-weight="bold">Chol</text>
+    <rect x="70" y="130" width="90" height="6" rx="3" fill="#e0e0e0"/>
+    <rect x="70" y="130" width="55" height="6" rx="3" fill="#4facfe"/>
+    
+    <circle cx="40" cy="180" r="15" fill="#4facfe" opacity="0.2"/>
+    <text x="40" y="186" text-anchor="middle" fill="#333333" font-size="9" font-weight="bold">ECG</text>
+    <rect x="70" y="170" width="90" height="6" rx="3" fill="#e0e0e0"/>
+    <rect x="70" y="170" width="80" height="6" rx="3" fill="#4facfe"/>
+    
+    <!-- More indicators -->
+    <g transform="translate(0, 60)">
+      <circle cx="90" cy="160" r="4" fill="#4facfe"/>
+      <circle cx="90" cy="175" r="4" fill="#4facfe"/>
+      <circle cx="90" cy="190" r="4" fill="#4facfe"/>
+    </g>
+    
+    <text x="90" y="280" text-anchor="middle" fill="#667eea" font-size="14" font-weight="bold">13+ Features</text>
+  </g>
+
+  <!-- ML Processing -->
+  <g transform="translate(290, 140)">
+    <rect x="0" y="0" width="220" height="360" rx="12" fill="#764ba2" opacity="0.1" stroke="#764ba2" stroke-width="2"/>
+    <text x="110" y="25" text-anchor="middle" fill="#333333" font-size="18" font-weight="bold">ML Pipeline</text>
+    
+    <!-- Brain/AI Icon -->
+    <g transform="translate(55, 50)">
+      <circle cx="55" cy="55" r="50" fill="url(#brainGradient)" opacity="0.2"/>
+      <path d="M 55 25 Q 35 35, 35 55 Q 35 75, 55 85 Q 75 75, 75 55 Q 75 35, 55 25" 
+            fill="none" stroke="url(#brainGradient)" stroke-width="3" filter="url(#glow)"/>
+      <circle cx="45" cy="50" r="3" fill="#4facfe"/>
+      <circle cx="65" cy="50" r="3" fill="#4facfe"/>
+      <circle cx="55" cy="65" r="3" fill="#4facfe"/>
+      <circle cx="45" cy="65" r="3" fill="#4facfe"/>
+      <circle cx="65" cy="65" r="3" fill="#4facfe"/>
+      <line x1="45" y1="50" x2="55" y2="65" stroke="#4facfe" stroke-width="1.5" opacity="0.6"/>
+      <line x1="65" y1="50" x2="55" y2="65" stroke="#4facfe" stroke-width="1.5" opacity="0.6"/>
+      <line x1="45" y1="65" x2="65" y2="65" stroke="#4facfe" stroke-width="1.5" opacity="0.6"/>
+    </g>
+    
+    <!-- Processing Steps -->
+    <rect x="20" y="175" width="180" height="25" rx="12" fill="#667eea" opacity="0.15"/>
+    <text x="110" y="192" text-anchor="middle" fill="#333333" font-size="12" font-weight="600">Data Preprocessing</text>
+    
+    <rect x="20" y="210" width="180" height="25" rx="12" fill="#764ba2" opacity="0.15"/>
+    <text x="110" y="227" text-anchor="middle" fill="#333333" font-size="12" font-weight="600">Feature Engineering</text>
+    
+    <rect x="20" y="245" width="180" height="25" rx="12" fill="#667eea" opacity="0.15"/>
+    <text x="110" y="262" text-anchor="middle" fill="#333333" font-size="12" font-weight="600">Model Training</text>
+    
+    <rect x="20" y="280" width="180" height="25" rx="12" fill="#764ba2" opacity="0.15"/>
+    <text x="110" y="297" text-anchor="middle" fill="#333333" font-size="12" font-weight="600">SHAP Analysis</text>
+    
+    <!-- Accuracy Badge -->
+    <circle cx="110" cy="335" r="18" fill="#00d4aa" filter="url(#shadow)"/>
+    <text x="110" y="340" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">93%</text>
+  </g>
+
+  <!-- Output Section -->
+  <g transform="translate(540, 140)">
+    <rect x="0" y="0" width="180" height="360" rx="12" fill="#ff6b6b" opacity="0.1" stroke="#ee5a6f" stroke-width="2"/>
+    <text x="90" y="25" text-anchor="middle" fill="#333333" font-size="18" font-weight="bold">Prediction</text>
+    
+    <!-- Heart Icon -->
+    <g transform="translate(50, 60)">
+      <path d="M 40 30 C 40 20, 30 15, 25 20 C 20 25, 20 30, 25 35 L 40 50 L 55 35 C 60 30, 60 25, 55 20 C 50 15, 40 20, 40 30 Z" 
+            fill="url(#heartGradient)" filter="url(#glow)"/>
+      <!-- Heartbeat line -->
+      <path d="M 15 70 L 25 70 L 30 60 L 35 80 L 40 70 L 65 70" 
+            fill="none" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Result Cards -->
+    <rect x="20" y="150" width="140" height="50" rx="10" fill="#00d4aa" opacity="0.9" filter="url(#shadow)"/>
+    <text x="90" y="170" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">Low Risk</text>
+    <text x="90" y="190" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="bold">12%</text>
+    
+    <rect x="20" y="215" width="140" height="50" rx="10" fill="#ffd93d" opacity="0.9" filter="url(#shadow)"/>
+    <text x="90" y="235" text-anchor="middle" fill="#333333" font-size="14" font-weight="bold">Medium Risk</text>
+    <text x="90" y="255" text-anchor="middle" fill="#333333" font-size="20" font-weight="bold">28%</text>
+    
+    <rect x="20" y="280" width="140" height="50" rx="10" fill="#ff6b6b" opacity="0.9" filter="url(#shadow)"/>
+    <text x="90" y="300" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">High Risk</text>
+    <text x="90" y="320" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="bold">60%</text>
+  </g>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666666" />
+    </marker>
+  </defs>
+  <line x1="270" y1="320" x2="285" y2="320" stroke="#666666" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <line x1="520" y1="320" x2="535" y2="320" stroke="#666666" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Tech Stack Footer -->
+  <g transform="translate(50, 565)">
+    <text x="0" y="0" fill="#ffffff" font-size="14" font-weight="600" opacity="0.9">Tech Stack:</text>
+    <rect x="80" y="-12" width="75" height="20" rx="10" fill="#3776ab" opacity="0.8"/>
+    <text x="117" y="2" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Python</text>
+    
+    <rect x="165" y="-12" width="95" height="20" rx="10" fill="#f7931e" opacity="0.8"/>
+    <text x="212" y="2" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Scikit-learn</text>
+    
+    <rect x="270" y="-12" width="70" height="20" rx="10" fill="#150458" opacity="0.8"/>
+    <text x="305" y="2" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Pandas</text>
+    
+    <rect x="350" y="-12" width="60" height="20" rx="10" fill="#000000" opacity="0.8"/>
+    <text x="380" y="2" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Flask</text>
+    
+    <rect x="420" y="-12" width="60" height="20" rx="10" fill="#e74c3c" opacity="0.8"/>
+    <text x="450" y="2" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">SHAP</text>
+  </g>
+</svg>

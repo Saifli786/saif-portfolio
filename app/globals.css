@@ -1,26 +1,427 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────
+   Design Tokens — Luxury Crimson / Black
+───────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --bg-void:      #080808;
+  --bg-surface:   #111111;
+  --bg-elevated:  #1a1a1a;
+  --bg-glass:     rgba(255, 255, 255, 0.025);
+
+  /* Crimson */
+  --crimson:       #dc2626;
+  --crimson-deep:  #991b1b;
+  --crimson-light: #ef4444;
+  --crimson-glow:  rgba(220, 38, 38, 0.18);
+  --crimson-border:rgba(220, 38, 38, 0.25);
+
+  /* Text */
+  --text-primary:  #fafafa;
+  --text-secondary:#a1a1aa;
+  --text-muted:    #52525b;
+
+  /* Borders */
+  --border:        rgba(255, 255, 255, 0.06);
+  --border-hover:  rgba(255, 255, 255, 0.12);
+
+  /* Radius */
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+
+  /* Shadows */
+  --shadow-glass:   0 8px 32px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-crimson: 0 0 40px rgba(220,38,38,0.2);
+  --shadow-luxury:  0 24px 80px rgba(0,0,0,0.8);
+
+  /* Transitions */
+  --ease:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Light mode — CSS variable overrides */
+.light {
+  --bg-void:        #f8f8f8;
+  --bg-surface:     #f0f0f0;
+  --bg-elevated:    #ffffff;
+  --bg-glass:       rgba(255, 255, 255, 0.85);
+  --text-primary:   #09090b;
+  --text-secondary: #3f3f46;
+  --text-muted:     #71717a;
+  --border:         rgba(0, 0, 0, 0.08);
+  --border-hover:   rgba(0, 0, 0, 0.14);
+  --shadow-glass:   0 8px 32px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(0,0,0,0.06);
+  --crimson-glow:   rgba(220, 38, 38, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─────────────────────────────────────────────────────────
+   Light Mode — Adaptive Color Override System
+   All components use text-white/* which is invisible on light backgrounds.
+   These overrides flip them to near-black equivalents.
+───────────────────────────────────────────────────────── */
+
+/* Text opacity: white → near-black */
+.light .text-white\/95  { color: rgb(9 9 11 / .95); }
+.light .text-white\/90  { color: rgb(9 9 11 / .9);  }
+.light .text-white\/85  { color: rgb(9 9 11 / .85); }
+.light .text-white\/80  { color: rgb(9 9 11 / .8);  }
+.light .text-white\/75  { color: rgb(9 9 11 / .75); }
+.light .text-white\/70  { color: rgb(9 9 11 / .7);  }
+.light .text-white\/65  { color: rgb(9 9 11 / .65); }
+.light .text-white\/60  { color: rgb(9 9 11 / .6);  }
+.light .text-white\/55  { color: rgb(9 9 11 / .55); }
+.light .text-white\/50  { color: rgb(9 9 11 / .5);  }
+.light .text-white\/45  { color: rgb(9 9 11 / .45); }
+.light .text-white\/40  { color: rgb(9 9 11 / .4);  }
+.light .text-white\/35  { color: rgb(9 9 11 / .35); }
+.light .text-white\/30  { color: rgb(9 9 11 / .3);  }
+.light .text-white\/25  { color: rgb(9 9 11 / .25); }
+.light .text-white\/20  { color: rgb(9 9 11 / .2);  }
+.light .text-white\/15  { color: rgb(9 9 11 / .15); }
+.light .text-white\/10  { color: rgb(9 9 11 / .1);  }
+
+/* Hover text overrides */
+.light .hover\:text-white:hover        { color: rgb(9 9 11); }
+.light .hover\:text-white\/80:hover    { color: rgb(9 9 11 / .8); }
+.light .hover\:text-white\/70:hover    { color: rgb(9 9 11 / .7); }
+.light .hover\:text-white\/60:hover    { color: rgb(9 9 11 / .6); }
+
+/* Group-hover text overrides */
+.light .group:hover .group-hover\:text-white\/60 { color: rgb(9 9 11 / .6); }
+.light .group:hover .group-hover\:text-white\/80 { color: rgb(9 9 11 / .8); }
+
+/* Background: white-opacity → black-opacity */
+.light .bg-white\/5            { background-color: rgb(0 0 0 / .05); }
+.light .bg-white\/8            { background-color: rgb(0 0 0 / .08); }
+.light .bg-white\/10           { background-color: rgb(0 0 0 / .10); }
+.light .bg-white\/\[0\.03\]    { background-color: rgb(0 0 0 / .03); }
+.light .bg-white\/\[0\.04\]    { background-color: rgb(0 0 0 / .04); }
+.light .bg-white\/\[0\.05\]    { background-color: rgb(0 0 0 / .05); }
+.light .bg-white\/\[0\.08\]    { background-color: rgb(0 0 0 / .08); }
+.light .hover\:bg-white\/8:hover           { background-color: rgb(0 0 0 / .08); }
+.light .hover\:bg-white\/\[0\.03\]:hover   { background-color: rgb(0 0 0 / .03); }
+.light .hover\:bg-white\/\[0\.04\]:hover   { background-color: rgb(0 0 0 / .04); }
+
+/* Border: white-opacity → black-opacity */
+.light .border-white\/5   { border-color: rgb(0 0 0 / .05); }
+.light .border-white\/6   { border-color: rgb(0 0 0 / .06); }
+.light .border-white\/8   { border-color: rgb(0 0 0 / .08); }
+.light .border-white\/10  { border-color: rgb(0 0 0 / .10); }
+.light .border-white\/12  { border-color: rgb(0 0 0 / .12); }
+
+/* Dividers */
+.light .divide-white\/5 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(0 0 0 / .05);
+}
+
+/* Fix white gradient text (invisible on white background) */
+.light .text-gradient-white {
+  background: linear-gradient(135deg, #09090b 0%, #52525b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced glass morphism for light mode */
+.light .glass {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Glass crimson in light mode */
+.light .glass-crimson {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.07) 0%, rgba(153, 27, 27, 0.04) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.18);
+}
+
+/* Skill bar track */
+.light .skill-bar-track {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+/* Portfolio filter tabs */
+.light .filter-tab {
+  color: #52525b;
+  border-color: rgba(0, 0, 0, 0.10);
+  background: transparent;
+}
+.light .filter-tab:hover {
+  color: #09090b;
+  background: rgba(220, 38, 38, 0.07);
+  border-color: rgba(220, 38, 38, 0.18);
+}
+.light .filter-tab.active {
+  color: #09090b;
+  background: rgba(220, 38, 38, 0.10);
+  border-color: rgba(220, 38, 38, 0.22);
+  box-shadow: 0 0 16px rgba(220, 38, 38, 0.08);
+}
+
+/* Scroll progress bar in light mode */
+.light #scroll-progress {
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.35);
+}
+
+/* Glow effects — softer in light mode */
+.light .glow-crimson {
+  box-shadow: 0 0 24px rgba(220, 38, 38, 0.15);
+}
+
+/* Placeholder text in forms */
+.light input::placeholder,
+.light textarea::placeholder {
+  color: rgb(0 0 0 / .25);
+}
+
+/* Contact form inputs */
+.light input,
+.light textarea {
+  color: #09090b;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.light input:focus,
+.light textarea:focus {
+  border-color: rgba(220, 38, 38, 0.4);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Base
+───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans, 'Inter', system-ui, sans-serif);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Scroll Progress Bar
+───────────────────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--crimson), var(--crimson-deep));
+  z-index: 99999;
+  box-shadow: 0 0 12px var(--crimson-glow);
+  transition: width 0.1s linear;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Custom Scrollbar
+───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--crimson), var(--crimson-deep));
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Glass Morphism Utility
+───────────────────────────────────────────────────────── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-crimson {
+  background: linear-gradient(135deg,
+    rgba(220, 38, 38, 0.06) 0%,
+    rgba(153, 27, 27, 0.04) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--crimson-border);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Gradient Text
+───────────────────────────────────────────────────────── */
+.text-gradient-crimson {
+  background: linear-gradient(135deg, #fafafa 0%, #dc2626 60%, #991b1b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Section Base
+───────────────────────────────────────────────────────── */
+.section {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Crimson Glow Effects
+───────────────────────────────────────────────────────── */
+.glow-crimson {
+  box-shadow: 0 0 40px var(--crimson-glow);
+}
+
+.glow-crimson-lg {
+  box-shadow: 0 0 80px rgba(220, 38, 38, 0.25),
+              0 0 160px rgba(220, 38, 38, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Three.js Canvas
+───────────────────────────────────────────────────────── */
+.three-canvas canvas {
+  position: absolute !important;
+  top: 0; left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Lenis Smooth Scroll Override
+───────────────────────────────────────────────────────── */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ─────────────────────────────────────────────────────────
+   Skill Progress Bar
+───────────────────────────────────────────────────────── */
+.skill-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson), var(--crimson-deep));
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--crimson-glow);
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   AOS Fallback (if installed)
+───────────────────────────────────────────────────────── */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Preloader
+───────────────────────────────────────────────────────── */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: var(--bg-void);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader-ring {
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(220, 38, 38, 0.15);
+  border-top-color: var(--crimson);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Portfolio Filter Tabs
+───────────────────────────────────────────────────────── */
+.filter-tab {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  background: transparent;
+  white-space: nowrap;
+}
+
+.filter-tab:hover,
+.filter-tab.active {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: var(--crimson-border);
+  color: var(--text-primary);
+}
+
+.filter-tab.active {
+  background: rgba(220, 38, 38, 0.15);
+  box-shadow: 0 0 20px var(--crimson-glow);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Responsive Container
+───────────────────────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (max-width: 640px) {
+  .container { padding-inline: 16px; }
 }
