@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import { Sun, Moon, Menu, X, Home, User, Zap, FileText, Layers, Settings, MessageSquare, Mail } from "lucide-react";
+import { Menu, X, Home, User, Zap, FileText, Layers, Settings, MessageSquare, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import Image from "next/image";
 import { navItems, socialLinks, personalInfo } from "@/lib/data";
@@ -28,7 +27,6 @@ const socialIconMap: Record<string, React.ReactNode> = {
 export default function Sidebar() {
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -126,17 +124,6 @@ export default function Sidebar() {
             </a>
           ))}
         </div>
-
-        {/* Theme Toggle */}
-        {mounted && (
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="w-full flex items-center justify-center gap-2 py-2 text-xs text-zinc-400 dark:text-white/30 hover:text-zinc-800 dark:hover:text-white/60 transition-colors rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.03]"
-          >
-            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-            <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
-          </button>
-        )}
       </div>
     </>
   );

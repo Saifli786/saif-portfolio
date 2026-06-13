@@ -1,122 +1,198 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { personalInfo, socialLinks, navItems } from "@/lib/data";
-import { Heart, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, ArrowUp } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 
-const socialIconMap: Record<string, React.ReactNode> = {
-  Github:   <GithubIcon size={18} />,
-  Linkedin: <LinkedinIcon size={18} />,
-};
+// Official LeetCode SVG path
+const LeetCodeIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M16.102 17.93l-2.697 2.607c-.466.451-1.211.451-1.677 0l-2.697-2.607c-.466-.45-.466-1.18 0-1.63l2.697-2.607c.466-.45 1.211-.45 1.677 0l2.697 2.607c.466.45.466 1.18 0 1.63zm3.898-3.575c0-.742-.604-1.346-1.346-1.346H10.615c-.742 0-1.346.604-1.346 1.346s.604 1.346 1.346 1.346h7.538c.742 0 1.346-.604 1.346-1.346zm-6.797-4.96c0-.741-.605-1.346-1.347-1.346H5.347c-.742 0-1.346.605-1.346 1.346s.604 1.346 1.346 1.346h6.509c.742 0 1.347-.605 1.347-1.346zm-1.102-5.465L9.406 6.537c-.466.451-1.211.451-1.677 0L5.032 3.93c-.466-.45-.466-1.18 0-1.63L7.729.307c.466-.45 1.211-.45 1.677 0l2.697 2.607c.466.45.466 1.18 0 1.63z" />
+  </svg>
+);
+
+// Standard HackerRank SVG path
+const HackerRankIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M7.6 6v12h3.2v-4.4h2.4V18h3.2V6h-3.2v4.4h-2.4V6H7.6z" />
+  </svg>
+);
 
 export default function Footer() {
-  function scrollToTop() {
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  };
 
   return (
-    <footer
-      className="relative overflow-hidden border-t border-white/5"
-      style={{ background: "linear-gradient(180deg, var(--bg-void) 0%, #050505 100%)" }}
-    >
-      {/* Top gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-crimson-700/40 to-transparent" />
+    <footer className="relative overflow-hidden bg-white dark:bg-black text-neutral-900 dark:text-white border-t border-neutral-200 dark:border-neutral-900 transition-colors duration-300">
+      {/* Accent gradient line at top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-600/40 to-transparent" />
 
-      {/* Ambient background */}
+      {/* Decorative luxury gradient background (ambient red glow) */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-[0.04] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-[0.03] dark:opacity-[0.04] pointer-events-none"
         style={{ background: "radial-gradient(ellipse, #dc2626 0%, transparent 70%)" }}
       />
 
-      <div className="container py-16 relative">
-        {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-
-          {/* Brand */}
-          <div>
-            <div className="text-2xl font-black tracking-[-0.04em] text-white/90 font-mono mb-3">
-              Saif<span className="text-crimson-600">.</span>dev
-            </div>
-            <p className="text-sm text-white/30 leading-relaxed mb-5 max-w-[240px]">
-              {personalInfo.tagline}
+      <div className="container pt-24 pb-12 relative z-10">
+        {/* Main 3-Column Layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 xl:gap-24 mb-20"
+        >
+          {/* COLUMN 1 — BRAND */}
+          <div className="flex flex-col justify-start">
+            <span className="text-xs font-bold tracking-widest text-red-600 dark:text-red-500 uppercase block">
+              AI/ML Developer &bull; Researcher &bull; Builder
+            </span>
+            <p className="mt-5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
+              Building intelligent systems through Artificial Intelligence, Machine Learning, Deep Learning, Computer Vision, and Modern Software Engineering.
             </p>
-            <div className="flex gap-2">
-              {socialLinks.map(link => (
+
+            {/* Circular Glassmorphism Social Buttons */}
+            <div className="flex flex-wrap gap-3 mt-8">
+              {[
+                {
+                  name: "GitHub",
+                  url: "https://github.com/Saifli786",
+                  icon: <GithubIcon size={20} />,
+                },
+                {
+                  name: "LinkedIn",
+                  url: "https://www.linkedin.com/in/saif-ali-5b0887334/",
+                  icon: <LinkedinIcon size={20} />,
+                },
+                {
+                  name: "LeetCode",
+                  url: "https://leetcode.com/u/saifali_786/",
+                  icon: <LeetCodeIcon className="w-5 h-5" />,
+                },
+                {
+                  name: "HackerRank",
+                  url: "https://www.hackerrank.com/profile/saifali_dev786",
+                  icon: <HackerRankIcon className="w-5 h-5" />,
+                },
+                {
+                  name: "Email",
+                  url: "mailto:saifansarik7@gmail.com",
+                  icon: <Mail className="w-5 h-5" />,
+                },
+              ].map((social) => (
                 <a
-                  key={link.name}
-                  href={link.url}
+                  key={social.name}
+                  href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title={link.name}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl glass text-white/35 hover:text-white hover:border-crimson-800/40 transition-all duration-200"
+                  aria-label={social.name}
+                  className="w-11 h-11 rounded-full flex items-center justify-center bg-neutral-100/80 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-500 social-glow cursor-pointer"
                 >
-                  {link.image
-                    ? <Image src={link.image} alt={link.name} width={18} height={18} className="opacity-50" />
-                    : socialIconMap[link.icon]
-                  }
+                  {social.icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <div className="text-[10px] text-crimson-600 uppercase tracking-widest font-bold mb-4">Quick Links</div>
-            <ul className="space-y-2.5">
-              {navItems.map(item => (
-                <li key={item.href}>
+          {/* COLUMN 2 — QUICK LINKS */}
+          <div className="flex flex-col justify-start md:pl-8 xl:pl-16">
+            <h4 className="font-playfair text-lg font-bold tracking-wider text-neutral-900 dark:text-white mb-6">
+              Quick Links
+            </h4>
+            <nav className="flex flex-col space-y-4">
+              {[
+                { label: "Hero", href: "#hero" },
+                { label: "About", href: "#about" },
+                { label: "Skills", href: "#skills" },
+                { label: "Resume", href: "#resume" },
+                { label: "Projects", href: "#portfolio" },
+                { label: "Achievements", href: "/achievements", isExternal: true },
+                { label: "Contact", href: "#contact" },
+              ].map((link) => {
+                if (link.isExternal) {
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="link-underline text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-500 w-fit cursor-pointer"
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                }
+                return (
                   <a
-                    href={item.href}
-                    className="text-sm text-white/30 hover:text-white/70 transition-colors flex items-center gap-2 group"
+                    key={link.label}
+                    href={link.href}
+                    className="link-underline text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-500 w-fit cursor-pointer"
                   >
-                    <span className="w-0 group-hover:w-3 h-px bg-crimson-600 transition-all duration-200 inline-block" />
-                    {item.label}
+                    {link.label}
                   </a>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="/achievements"
-                  className="text-sm text-white/30 hover:text-white/70 transition-colors flex items-center gap-2 group"
-                >
-                  <span className="w-0 group-hover:w-3 h-px bg-crimson-600 transition-all duration-200 inline-block" />
-                  Achievements
-                </Link>
-              </li>
-            </ul>
+                );
+              })}
+            </nav>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <div className="text-[10px] text-crimson-600 uppercase tracking-widest font-bold mb-4">Contact</div>
-            <div className="space-y-2.5">
-              <div className="text-sm text-white/30">{personalInfo.location}</div>
-              <a href={`mailto:${personalInfo.email}`} className="text-sm text-white/30 hover:text-crimson-400 transition-colors block break-all">
-                {personalInfo.email}
-              </a>
-              <a href={`tel:${personalInfo.phone}`} className="text-sm text-white/30 hover:text-white/60 transition-colors block">
-                {personalInfo.phone}
-              </a>
+          {/* COLUMN 3 — CONTACT */}
+          <div className="flex flex-col justify-start">
+            <h4 className="font-playfair text-lg font-bold tracking-wider text-neutral-900 dark:text-white mb-6">
+              Contact
+            </h4>
+            <div className="space-y-6 text-sm">
+              <div>
+                <span className="block text-[10px] uppercase tracking-[0.2em] font-bold text-red-600 dark:text-red-500 mb-1">
+                  Location
+                </span>
+                <p className="text-neutral-800 dark:text-neutral-300 font-medium">
+                  Bihar, India
+                </p>
+              </div>
+
+              <div>
+                <span className="block text-[10px] uppercase tracking-[0.2em] font-bold text-red-600 dark:text-red-500 mb-1">
+                  Email
+                </span>
+                <a
+                  href="mailto:saifansarik7@gmail.com"
+                  className="link-underline text-neutral-800 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-500 font-medium cursor-pointer"
+                >
+                  saifansarik7@gmail.com
+                </a>
+              </div>
+
+              <div>
+                <span className="block text-[10px] uppercase tracking-[0.2em] font-bold text-red-600 dark:text-red-500 mb-1">
+                  Availability
+                </span>
+                <p className="text-neutral-800 dark:text-neutral-300 font-medium leading-relaxed">
+                  Open for Internships, Research and Collaboration
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/20 flex items-center gap-1">
-            © {new Date().getFullYear()} {personalInfo.name} · Built with{" "}
-            <Heart size={10} className="text-crimson-600 inline mx-0.5" />
-            using Next.js & Three.js
-          </p>
+        {/* BOTTOM BAR */}
+        <div className="border-t border-neutral-200 dark:border-neutral-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500 dark:text-neutral-400">
+          <div>
+            &copy; 2026 Md Saif Ali. All Rights Reserved.
+          </div>
 
-          <button
-            onClick={scrollToTop}
-            className="w-10 h-10 glass rounded-xl flex items-center justify-center text-white/30 hover:text-white hover:border-crimson-800/40 transition-all"
-          >
-            <ArrowUp size={16} />
-          </button>
+          <div className="font-medium tracking-wide">
+            Designed &amp; Developed by <span className="text-neutral-800 dark:text-white font-semibold">Md Saif Ali</span>
+          </div>
+
+          <div>
+            <button
+              onClick={scrollToTop}
+              aria-label="Back to Top"
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-100/80 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 active:scale-95 hover:shadow-[0_0_15px_rgba(220,38,38,0.4)] transition-all duration-300 cursor-pointer"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
