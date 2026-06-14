@@ -11,14 +11,14 @@ export const personalInfo = {
   phone: "+91-6307563574",
   location: "Patna / Bihar, India",
   university: "Maharishi Markandeshwar Deemed To Be University, Mullana, Ambala",
-  degree: "Bachelor of Engineering in Computer Science (AI&ML)",
+  degree: "Bachelor of Technology in Computer Science (AI&ML)",
   resumeUrl: "/assets/img/SAIF_RESUME.pdf",
   bio: [
     "I am a third-year B.Tech CSE (AI & ML) student with a strong foundation in machine learning, Python, and data analysis. I enjoy building intelligent systems and trying out new ideas in AI.",
     "I mostly work with Python libraries like Pandas, NumPy, and TensorFlow to analyze data and create predictive models. I'm looking for opportunities where I can apply what I've learned and gain real experience working on practical AI projects."
   ],
   stats: [
-    { value: "7.42", label: "CGPA (B.E.)" },
+    { value: "7.42", label: "CGPA (B.Tech)" },
     { value: "2", label: "OCI Certifications" },
     { value: "4 Weeks", label: "NIELIT Internship" },
     { value: "10+", label: "Python/ML Projects" },
@@ -26,7 +26,7 @@ export const personalInfo = {
   details: [
     { label: "Specialization", value: "Artificial Intelligence & Machine Learning" },
     { label: "College", value: "MM(DU), Mullana, Ambala" },
-    { label: "Degree", value: "B.E. Computer Science (AI & ML)" },
+    { label: "Degree", value: "B.Tech Computer Science (AI & ML)" },
     { label: "Languages", value: "Hindi, English" },
   ],
 };
@@ -114,7 +114,7 @@ export const resumeData = {
   ],
   education: [
     {
-      degree: "Bachelor of Engineering in Computer Science (AI&ML)",
+      degree: "Bachelor of Technology in Computer Science (AI&ML)",
       institution: "Maharishi Markandeshwar Deemed To Be University",
       period: "Aug 2023 – Present",
       detail: "CGPA: 7.42 | Specialization in AI & ML | Mullana, Ambala",
