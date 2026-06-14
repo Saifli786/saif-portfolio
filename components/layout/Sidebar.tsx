@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, User, Zap, FileText, Layers, Settings, MessageSquare, Mail } from "lucide-react";
+import { Menu, X, Home, User, Zap, FileText, Layers, Settings, MessageSquare, Mail, Award } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
 import Image from "next/image";
 import { navItems, socialLinks, personalInfo } from "@/lib/data";
@@ -17,6 +17,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Settings: <Settings size={16} />,
   MessageSquare: <MessageSquare size={16} />,
   Mail: <Mail size={16} />,
+  Award: <Award size={16} />,
 };
 
 const socialIconMap: Record<string, React.ReactNode> = {
@@ -62,7 +63,6 @@ export default function Sidebar() {
         <div className="text-center">
           <div className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white/90 font-mono">
             {personalInfo.shortName}
-            <span className="text-crimson-600">.</span>dev
           </div>
           <div className="text-[11px] text-zinc-500 dark:text-white/30 mt-0.5 uppercase tracking-widest">Portfolio</div>
         </div>

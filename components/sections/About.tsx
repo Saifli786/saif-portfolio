@@ -55,12 +55,13 @@ export default function About() {
               <div className="w-32 h-32 mx-auto mb-5 relative">
                 <div className="absolute inset-0 rounded-full"
                   style={{ background: "conic-gradient(from 0deg, #dc2626, #450a0a, #dc2626)", padding: "2px" }}>
-                  <div className="w-full h-full rounded-full overflow-hidden bg-black">
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-black">
                     <Image
                       src="/assets/img/profile-img.jpg"
                       alt={personalInfo.name}
                       fill
                       className="object-cover"
+                      sizes="128px"
                     />
                   </div>
                 </div>

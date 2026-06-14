@@ -63,7 +63,7 @@ export default function Footer() {
                 },
                 {
                   name: "LinkedIn",
-                  url: "https://www.linkedin.com/in/saif-ali-5b0887334/",
+                  url: "https://www.linkedin.com/in/md-saif-ali-a1697b322/",
                   icon: <LinkedinIcon size={20} />,
                 },
                 {
@@ -177,11 +177,11 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="border-t border-neutral-200 dark:border-neutral-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500 dark:text-neutral-400">
           <div>
-            &copy; 2026 Md Saif Ali. All Rights Reserved.
+            &copy; 2026 Saif Ansari. All Rights Reserved.
           </div>
 
           <div className="font-medium tracking-wide">
-            Designed &amp; Developed by <span className="text-neutral-800 dark:text-white font-semibold">Md Saif Ali</span>
+            Designed &amp; Developed by <span className="text-neutral-800 dark:text-white font-semibold">Saif Ansari</span>
           </div>
 
           <div>

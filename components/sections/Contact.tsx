@@ -114,7 +114,7 @@ export default function Contact() {
                     value={form.name}
                     onChange={handleChange}
                     required
-                    placeholder="Md Saif Ali"
+                    placeholder="Saif Ansari"
                     className={inputClass}
                   />
                 </div>

@@ -5,8 +5,8 @@ import { achievements } from "@/lib/data";
 import { ArrowLeft, FileText, Download, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Achievements & Certifications — Md Saif Ali",
-  description: "Professional certifications and achievement documents of Md Saif Ali — AI/ML Engineer. Oracle Cloud, NIELIT, academic records and more.",
+  title: "Achievements & Certifications — Saif Ansari",
+  description: "Professional certifications and achievement documents of Saif Ansari — AI/ML Engineer. Oracle Cloud, NIELIT, academic records and more.",
 };
 
 export default function AchievementsPage() {
@@ -26,7 +26,7 @@ export default function AchievementsPage() {
             Back to Portfolio
           </Link>
           <div className="text-sm font-mono text-white/30">
-            Saif<span className="text-crimson-600">.</span>dev / achievements
+            Saif / achievements
           </div>
         </div>
       </header>
@@ -64,6 +64,7 @@ export default function AchievementsPage() {
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={i === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>

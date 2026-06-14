@@ -125,12 +125,12 @@ export default function Hero() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-[clamp(48px,8vw,88px)] font-black tracking-[-0.04em] leading-none mb-4"
+              className="font-playfair text-[clamp(48px,8vw,88px)] tracking-tight leading-none mb-4"
             >
-              <span className="text-white/90">Md </span>
-              <span className="text-gradient-crimson">Saif</span>
+              <span className="text-white/90 font-light italic">Md </span>
+              <span className="text-gradient-crimson font-bold italic">Saif</span>
               <br />
-              <span className="text-white/60 text-[0.7em]">Ali</span>
+              <span className="text-white/60 font-semibold text-[0.8em]">Ali</span>
             </motion.h1>
 
             {/* Typed subtitle */}
@@ -218,7 +218,7 @@ export default function Hero() {
                 style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.8), 0 0 60px rgba(220,38,38,0.1)" }}>
                 <Image
                   src="/assets/img/profile-img.jpg"
-                  alt="Md Saif Ali — AI/ML Engineer"
+                  alt="Saif Ansari — AI/ML Engineer"
                   fill
                   className="object-cover object-center"
                   priority
@@ -228,7 +228,7 @@ export default function Hero() {
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-xs text-white/40 font-mono uppercase tracking-widest mb-0.5">AI/ML Engineer</div>
-                  <div className="text-sm font-semibold text-white/80">MM(DU) — Batch 2026</div>
+                  <div className="text-sm font-semibold text-white/80">MM(DU) — CSE (AI&ML)</div>
                 </div>
               </div>
 

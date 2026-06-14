@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: `Portfolio of ${personalInfo.name} — ${personalInfo.bio[0]}`,
   keywords: [
     "AI engineer", "machine learning", "deep learning", "Python",
-    "TensorFlow", "Scikit-learn", "Md Saif Ali", "AI portfolio",
+    "TensorFlow", "Scikit-learn", "Saif Ansari", "AI portfolio",
     "computer vision", "NLP", "data science"
   ],
   authors: [{ name: personalInfo.name }],
@@ -45,9 +45,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <LenisProvider>
