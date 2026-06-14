@@ -125,12 +125,39 @@ export default function Hero() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-playfair text-[clamp(48px,8vw,88px)] tracking-tight leading-none mb-4"
+              className="font-playfair text-[clamp(48px,8vw,88px)] tracking-tight leading-none mb-4 select-none"
             >
-              <span className="text-white/90 font-light italic">Md </span>
-              <span className="text-gradient-crimson font-bold italic">Saif</span>
+              <span 
+                className="inline-serif text-white/90 font-light italic mr-4" 
+                data-text="Md"
+                style={{ 
+                  "--outline-color": "var(--inline-serif-outer-light)", 
+                  "--inline-color": "var(--inline-serif-inner)" 
+                } as React.CSSProperties}
+              >
+                Md
+              </span>
+              <span 
+                className="inline-serif text-gradient-crimson font-bold italic" 
+                data-text="Saif"
+                style={{ 
+                  "--outline-color": "var(--crimson)", 
+                  "--inline-color": "var(--inline-serif-inner)" 
+                } as React.CSSProperties}
+              >
+                Saif
+              </span>
               <br />
-              <span className="text-white/60 font-semibold text-[0.8em]">Ali</span>
+              <span 
+                className="inline-serif text-white/60 font-semibold text-[0.8em]" 
+                data-text="Ali"
+                style={{ 
+                  "--outline-color": "var(--inline-serif-outer-muted)", 
+                  "--inline-color": "var(--inline-serif-inner)" 
+                } as React.CSSProperties}
+              >
+                Ali
+              </span>
             </motion.h1>
 
             {/* Typed subtitle */}

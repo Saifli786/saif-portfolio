@@ -71,7 +71,7 @@ export const navItems = [
   { label: "About",        href: "#about",        icon: "User" },
   { label: "Skills",       href: "#skills",       icon: "Zap" },
   { label: "Resume",       href: "#resume",       icon: "FileText" },
-  { label: "Portfolio",    href: "#portfolio",    icon: "Layers" },
+  { label: "Project",      href: "#portfolio",    icon: "Layers" },
   { label: "Achievements", href: "/achievements", icon: "Award" },
   { label: "Contact",      href: "#contact",      icon: "Mail" },
 ];

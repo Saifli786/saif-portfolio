@@ -136,7 +136,7 @@ export default function Portfolio() {
     >
       <div className="container">
         <SectionTitle
-          eyebrow="Portfolio"
+          eyebrow="Project"
           title="Featured Projects"
           subtitle="AI and ML projects that demonstrate real-world problem solving"
         />

@@ -23,7 +23,7 @@ export default function AchievementsPage() {
             className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors"
           >
             <ArrowLeft size={16} />
-            Back to Portfolio
+            Back to Home
           </Link>
           <div className="text-sm font-mono text-white/30">
             Saif / achievements
