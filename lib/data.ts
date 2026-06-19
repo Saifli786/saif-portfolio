@@ -161,8 +161,8 @@ export const projects = [
     description:
       "Developed an ML model to predict heart disease risk using clinical and health parameters. Built end-to-end pipelines for preprocessing, feature scaling, correlation analysis, and model training. Evaluated Logistic Regression, Random Forest & SVM for best performance; implemented explainability via SHAP. Deployed a user-friendly web app for input-based risk output with visual interpretation dashboards.",
     techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "Flask/Streamlit", "Matplotlib/Seaborn", "SHAP", "HTML/CSS/JS"],
-    github: "https://github.com/Saifli786/Heart-Predication",
-    docs: "https://github.com/Saifli786/Heart-Predication#readme",
+    github: "https://github.com/Saifli786/MediScanAI-Heart",
+    docs: "https://github.com/Saifli786/MediScanAI-Heart#readme",
     demo: "https://medi-scan-ai-heart.vercel.app/",
     image: "/assets/img/project/heart-disease-ml.svg",
     featured: true,
