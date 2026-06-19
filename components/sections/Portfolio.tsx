@@ -83,7 +83,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                       backdropFilter: "blur(10px)"
                     }}
                   >
-                    <GithubIcon size={13} /> Link
+                    <GithubIcon size={13} /> GitHub
                   </a>
                   <a
                     href={project.demo}
@@ -111,7 +111,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     boxShadow: `0 4px 16px ${project.color}30`
                   }}
                 >
-                  <GithubIcon size={13} /> Link
+                  <GithubIcon size={13} /> GitHub
                 </a>
               )}
             </div>
