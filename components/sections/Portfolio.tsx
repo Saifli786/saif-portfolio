@@ -74,24 +74,60 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:bg-white/10"
                 style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.12)", backdropFilter: "blur(10px)" }}
               >
                 <GithubIcon size={13} /> GitHub
               </a>
-              <a
-                href={project.docs}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={e => e.stopPropagation()}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all"
-                style={{
-                  background: `linear-gradient(135deg, #dc2626, #991b1b)`,
-                  boxShadow: "0 4px 16px rgba(220,38,38,0.25)"
-                }}
-              >
-                <ExternalLink size={13} /> Docs
-              </a>
+              {"demo" in project && project.demo ? (
+                <>
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90"
+                    style={{
+                      background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)`,
+                      boxShadow: `0 4px 16px ${project.color}30`
+                    }}
+                  >
+                    <ExternalLink size={13} /> Demo
+                  </a>
+                  {project.docs && (
+                    <a
+                      href={project.docs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => e.stopPropagation()}
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:bg-white/10"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        backdropFilter: "blur(10px)"
+                      }}
+                    >
+                      Docs
+                    </a>
+                  )}
+                </>
+              ) : (
+                project.docs && (
+                  <a
+                    href={project.docs}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90"
+                    style={{
+                      background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)`,
+                      boxShadow: `0 4px 16px ${project.color}30`
+                    }}
+                  >
+                    <ExternalLink size={13} /> Docs
+                  </a>
+                )
+              )}
             </div>
           </div>
         </div>

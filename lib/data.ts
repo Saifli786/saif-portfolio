@@ -163,6 +163,7 @@ export const projects = [
     techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "Flask/Streamlit", "Matplotlib/Seaborn", "SHAP", "HTML/CSS/JS"],
     github: "https://github.com/Saifli786/Heart-Predication",
     docs: "https://github.com/Saifli786/Heart-Predication#readme",
+    demo: "https://medi-scan-ai-heart.vercel.app/",
     image: "/assets/img/project/heart-disease-ml.svg",
     featured: true,
     color: "#dc2626",
