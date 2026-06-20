@@ -313,4 +313,13 @@ export const achievements = [
     description: "Certification document",
     year: "2026",
   },
+  {
+    id: 13,
+    title: "ServiceNow Certified Application Developer (CAD)",
+    issuer: "ServiceNow",
+    file: "/assets/img/achievement/ServiceNow Certified Application Developer (CAD)_page-0001.jpg",
+    image: "/assets/img/achievement/ServiceNow Certified Application Developer (CAD)_page-0001.jpg",
+    description: "Certification document",
+    year: "2026",
+  },
 ];
