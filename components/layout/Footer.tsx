@@ -68,12 +68,12 @@ export default function Footer() {
                 },
                 {
                   name: "LeetCode",
-                  url: "https://leetcode.com/u/saifali_786/",
+                  url: "https://leetcode.com/u/saifli786/",
                   icon: <LeetCodeIcon className="w-5 h-5" />,
                 },
                 {
                   name: "HackerRank",
-                  url: "https://www.hackerrank.com/profile/saifali_dev786",
+                  url: "https://www.hackerrank.com/profile/saifansarik7",
                   icon: <HackerRankIcon className="w-5 h-5" />,
                 },
                 {

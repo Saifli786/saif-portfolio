@@ -35,13 +35,13 @@ export const socialLinks = [
   {
     name: "HackerRank",
     icon: "HackerRank",
-    url: "https://www.hackerrank.com/profile/saifali_dev786",
+    url: "https://www.hackerrank.com/profile/saifansarik7",
     image: "/assets/img/hackerrank.svg",
   },
   {
     name: "LeetCode",
     icon: "LeetCode",
-    url: "https://leetcode.com/u/saifali_786/",
+    url: "https://leetcode.com/u/saifli786/",
     image: "/assets/img/leetcode.svg",
   },
   {
